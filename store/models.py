@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
-
-class Shopper(AbstractUser):
-    pass
+from accounts.models import Shopper
 
 
 class Product(models.Model):
@@ -68,7 +65,7 @@ class Cart(models.Model):
 
 
 class OrderDetail(models.Model):
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.CharField(max_length=45, null=True, blank=True)
     unit_price = models.CharField(max_length=45, null=True, blank=True)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -89,19 +86,6 @@ class OrderDetail(models.Model):
 
     # @property
     # def getPrice(self):
-
-
-class Cart(models.Model):
-    # quantity = models.CharField(max_length=45)
-    total_price = models.FloatField(max_length=45, null=True, blank=True)
-    client = models.ForeignKey(Shopper, on_delete=models.CASCADE)
-    orders = models.ManyToManyField(Order, blank=True)
-
-    class Meta:
-        verbose_name = 'Panier'
-
-    def __str__(self) -> str:
-        return f"{self.client.username} ({self.total_price})"
 
 
 class Invoice(models.Model):
