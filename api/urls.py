@@ -4,9 +4,9 @@ from .views import *
 
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
-router.register(r'products', CartViewSet)
+router.register(r'cart', CartViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('', include('rest_framework.urls')),
+    path("", include(router.urls)),
+    path('v1/', include('rest_framework.urls')),
 ]
