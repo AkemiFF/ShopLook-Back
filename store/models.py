@@ -1,8 +1,7 @@
 from django.db import models
 
+
 # pour test uniquement
-
-
 class Product(models.Model):
 
     product_name = models.CharField(max_length=45)
