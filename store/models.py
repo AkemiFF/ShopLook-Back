@@ -12,7 +12,7 @@ class Product(models.Model):
     thumbnail = models.ImageField(upload_to="img", blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.product_name
 
     class Meta:
         verbose_name = "Produit"
