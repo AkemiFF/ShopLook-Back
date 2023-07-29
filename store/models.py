@@ -10,23 +10,6 @@ class Category(models.Model):
         return self.category_name
 
 
-class Product(models.Model):
-
-    product_name = models.CharField(max_length=45)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=128)
-    price = models.FloatField(default=0.0)
-    stock = models.IntegerField(default=0)
-    description = models.TextField(blank=True)
-    image = models.ImageField(upload_to="img", blank=True, null=True)
-
-    def __str__(self):
-        return self.product_name
-
-    class Meta:
-        verbose_name = "Produit"
-
-
 class Order(models.Model):
     client = models.ForeignKey(Shopper, on_delete=models.CASCADE)
     payment_details = models.FloatField(max_length=45, default=0)
@@ -70,6 +53,23 @@ class Cart(models.Model):
 
     def __str__(self) -> str:
         return f"{self.client.username} ({self.total_price})"
+
+
+class Product(models.Model):
+
+    product_name = models.CharField(max_length=45)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=128)
+    price = models.FloatField(default=0.0)
+    stock = models.IntegerField(default=0)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to="img", blank=True, null=True)
+
+    def __str__(self):
+        return self.product_name
+
+    class Meta:
+        verbose_name = "Produit"
 
 
 class OrderDetail(models.Model):
