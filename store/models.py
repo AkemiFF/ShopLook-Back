@@ -5,9 +5,30 @@ from accounts.models import Shopper
 
 class Category(models.Model):
     category_name = models.CharField(max_length=45)
+    description = models.TextField(max_length=255, blank=True)
+    show = models.BooleanField(default=True)
+    productLen = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return self.category_name
+
+    class Meta:
+        verbose_name = 'Categorie'
+
+    @property
+    def nb_product(self):
+        productCounts = self.product_set.all()
+        y = 0
+        value = [
+            productCount.category.category_name for productCount in productCounts]
+        for i in value:
+            if i == self.category_name:
+                y += 1
+        return y
+
+    def save(self, *args, **kwargs):
+        self.productLen = self.nb_product
+        super().save(*args, **kwargs)
 
 
 class Order(models.Model):
@@ -59,7 +80,7 @@ class Product(models.Model):
 
     product_name = models.CharField(max_length=45)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=128)
+    reference = models.TextField()
     price = models.FloatField(default=0.0)
     stock = models.IntegerField(default=0)
     description = models.TextField(blank=True)
@@ -70,6 +91,11 @@ class Product(models.Model):
 
     class Meta:
         verbose_name = "Produit"
+
+    def save(self, *args, **kwargs):
+        self.reference = f'{self.id}_{self.product_name[:2]}'
+        self.category.save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class OrderDetail(models.Model):
