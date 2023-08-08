@@ -1,7 +1,114 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-__pycache__
-venv
-.vscode
-.sqlite3
+# Caches and logs
+*.sqlite3
+*.log
+*.pot
+*.pyc
+db.sqlite3
+/db.sqlite3
+__pycache__/
+logs/
+*.log
+*.pid
 
-/store/migrations
+# Virtual environment
+venv/
+env/
+.env
+ENV/
+*.env
+.env.*
+
+# Development environment
+*.idea/
+.vscode/
+*.vscode/
+.vscode/
+*.code-workspace
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Dependency directories
+lib-python/
+lib64-python/
+lib32/
+libs/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+*.egg-info
+*.egg-info/
+
+# Documentation
+docs/_build/
+docs/build/
+
+# Compiled source
+__pycache__/
+*.pyc
+*.pyo
+
+# Local development settings
+settings_local.py
+
+# Database configuration
+*.db
+
+# Secret keys
+*.secret
+
+# Media files (uploaded user content)
+media/
+
+# Static files (collectstatic)
+staticfiles/
+/staticfiles/
+*.bak
+
+# Project-generated files
+.idea/
+.vscode/
+
+# Ignore migrations
+**/migrations/
+**/migrations/**
+
+# Ignore sensitive settings
+*.conf
+*.settings
+
+# Ignore development files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE configuration files
+.idea/
+.vscode/
+*.iml
+
+# Ignore backup files
+*~
+*#
+*.swp
+*.bak
+*.backup
+
+# Ignore pycache
+__pycache__/
+
+# Ignore temporary files
+*.tmp
+
+# Ignore node_modules
+node_modules/
