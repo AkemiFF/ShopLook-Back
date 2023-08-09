@@ -30,11 +30,6 @@ class Category(models.Model):
         self.productLen = y
         return y
 
-    def save(self, *args, **kwargs):
-        # self.productLen = self.nb_product
-
-        super().save(*args, **kwargs)
-
 
 class Order(models.Model):
     client = models.ForeignKey(Shopper, on_delete=models.CASCADE)

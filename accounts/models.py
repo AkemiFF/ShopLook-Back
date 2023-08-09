@@ -3,8 +3,11 @@ from store import baseModels
 
 
 class Shopper(AbstractUser):
-    def save(*args, **kwargs):
+    def save(self, *args, **kwargs):
+
         baseModels.initialize_categories()
+        super().save(*args, **kwargs)
+
 
 # class Shopper(models.Model):
 #     name = models.CharField(max_length=45, blank=False, default="")
