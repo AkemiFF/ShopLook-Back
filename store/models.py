@@ -1,6 +1,8 @@
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from accounts.models import Shopper
+from . import baseModels
 
 
 class Category(models.Model):
@@ -24,10 +26,13 @@ class Category(models.Model):
         for i in value:
             if i == self.category_name:
                 y += 1
+
+        self.productLen = y
         return y
 
     def save(self, *args, **kwargs):
-        self.productLen = self.nb_product
+        # self.productLen = self.nb_product
+
         super().save(*args, **kwargs)
 
 
@@ -95,6 +100,7 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.reference = f'{self.id}_{self.product_name[:2]}'
         self.category.save(*args, **kwargs)
+        self.category.productLen = self.category.nb_product
         super().save(*args, **kwargs)
 
 

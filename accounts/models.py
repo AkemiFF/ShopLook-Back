@@ -1,9 +1,10 @@
-from django.contrib.auth.models import AbstractUser, Group, Permission
-from django.db import models
+from django.contrib.auth.models import AbstractUser
+from store import baseModels
 
 
 class Shopper(AbstractUser):
-    pass
+    def save(*args, **kwargs):
+        baseModels.initialize_categories()
 
 # class Shopper(models.Model):
 #     name = models.CharField(max_length=45, blank=False, default="")
