@@ -5,7 +5,7 @@ from store import models
 def initialize_categories():
     Category = models.Category
     Category.objects.get_or_create(
-        category_name='Vêtements', description="Catégorie de vêtements comprenant une variété de styles, de tailles et de designs.")
+        category_name='Vetements', description="Catégorie de vêtements comprenant une variété de styles, de tailles et de designs.")
 
     Category.objects.get_or_create(
         category_name='Chaussures', description="Catégorie de chaussures comprenant des chaussures pour hommes, femmes et enfants dans différents styles et tailles.")

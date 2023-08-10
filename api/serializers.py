@@ -1,5 +1,12 @@
 from rest_framework import serializers
 from store.models import *
+from accounts.migrations import *
+
+
+class ShopperSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shopper
+        fields = '__all__'
 
 
 class ProductSerializer(serializers.ModelSerializer):

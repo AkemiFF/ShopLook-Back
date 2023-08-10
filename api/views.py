@@ -1,11 +1,17 @@
 from rest_framework import viewsets
 from store.models import *
+from accounts.models import *
 from .serializers import *
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class ShopperViewSet(viewsets.ModelViewSet):
+    queryset = Shopper.objects.all()
+    serializer_class = ShopperSerializer
 
 
 class CartViewSet(viewsets.ModelViewSet):
