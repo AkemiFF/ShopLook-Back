@@ -1,7 +1,6 @@
 from store import models
 
 
-# Fonction pour initialiser les catégories
 def initialize_categories():
     Category = models.Category
     Category.objects.get_or_create(
@@ -33,3 +32,7 @@ def initialize_categories():
 
     Category.objects.get_or_create(
         category_name='Autres', description="Catégorie pour les articles qui ne rentrent pas dans les catégories précédentes, offrant une diversité d'options.")
+
+
+if __name__ == "__main__":
+    initialize_categories()
