@@ -1,5 +1,12 @@
 from rest_framework import serializers
 from store.models import *
+from accounts.migrations import *
+
+
+class ShopperSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shopper
+        fields = '__all__'
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -11,6 +18,30 @@ class ProductSerializer(serializers.ModelSerializer):
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
+        fields = '__all__'
+
+
+class InvoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Invoice
+        fields = '__all__'
+
+
+class InvoiceDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = InvoiceDetail
+        fields = '__all__'
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+
+class OrderDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderDetail
         fields = '__all__'
 
 

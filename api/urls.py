@@ -5,6 +5,10 @@ from .views import *
 router = DefaultRouter()
 router.register(r'products', ProductViewSet)
 router.register(r'cart', CartViewSet)
+router.register(r'order', OrderViewSet)
+router.register(r'orderdetail', OrderDetailViewSet)
+router.register(r'invoicedetail', InvoiceDetailViewSet)
+router.register(r'invoice', InvoiceViewSet)
 router.register(r'category', CategoryViewSet)
 
 urlpatterns = [
