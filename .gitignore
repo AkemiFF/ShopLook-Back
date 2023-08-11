@@ -68,7 +68,7 @@ settings_local.py
 *.secret
 
 # Media files (uploaded user content)
-media/
+# media/
 
 # Static files (collectstatic)
 staticfiles/
