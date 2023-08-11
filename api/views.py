@@ -1,12 +1,22 @@
+import django_filters as filters
 from rest_framework import viewsets
 from store.models import *
 from accounts.models import *
 from .serializers import *
 
 
+class ProductFilter(filters.FilterSet):
+    category = filters.NumberFilter(field_name='category')
+
+    class Meta:
+        model = Product
+        fields = ['category']
+
+
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filterset_class = ProductFilter
 
 
 class ShopperViewSet(viewsets.ModelViewSet):
