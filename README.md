@@ -18,4 +18,4 @@ Projet d'application web open-source pour le E-Commerce
 
         python manage.py runserver
 
-  - Le serveur se lancera sur `http://127.0.0.1:8000/`
+- Le serveur se lancera sur `http://127.0.0.1:8000/`

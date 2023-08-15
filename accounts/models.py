@@ -1,13 +1,10 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission, AbstractBaseUser, PermissionsMixin
 from django.utils.translation import gettext_lazy as _
+from store import baseModels
 from django.utils import timezone
 from .manager import CustomUserManager
 from django.db import models
 import uuid
-
-
-# class Shopper(AbstractUser):
-#     pass
 
 # class Shopper(models.Model):
 #     name = models.CharField(max_length=45, blank=False, default="")
@@ -44,3 +41,8 @@ class Shopper(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+    
+        baseModels.initialize_categories()
+        super().save(*args, **kwargs)

@@ -1,4 +1,5 @@
 from django.db import models
+from . import baseModels
 
 
 class Category(models.Model):
@@ -22,11 +23,9 @@ class Category(models.Model):
         for i in value:
             if i == self.category_name:
                 y += 1
-        return y
 
-    def save(self, *args, **kwargs):
-        self.productLen = self.nb_product
-        super().save(*args, **kwargs)
+        self.productLen = y
+        return y
 
 
 class Order(models.Model):
@@ -93,6 +92,7 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.reference = f'{self.id}_{self.product_name[:2]}'
         self.category.save(*args, **kwargs)
+        self.category.productLen = self.category.nb_product
         super().save(*args, **kwargs)
 
 
