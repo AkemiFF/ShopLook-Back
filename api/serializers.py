@@ -1,11 +1,13 @@
 from rest_framework import serializers
 from store.models import *
-from accounts.migrations import *
+from django.contrib.auth import get_user_model
+# from accounts.migrations import *
 
 
 class ShopperSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Shopper
+        shopper = get_user_model()
+        model = shopper
         fields = '__all__'
 
 
