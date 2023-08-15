@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from accounts.models import Shopper
 
 
 class Category(models.Model):
@@ -32,13 +30,13 @@ class Category(models.Model):
 
 
 class Order(models.Model):
-    client = models.ForeignKey(Shopper, on_delete=models.CASCADE)
+    client = models.ForeignKey("accounts.Shopper", on_delete=models.CASCADE)
     payment_details = models.FloatField(max_length=45, default=0)
     order_date = models.DateField(null=True, blank=True)
     status = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return f'{self.client.username} ({len(self.unit_price)})'
+        return f'{self.client.first_name} ({len(self.unit_price)})'
 
     class Meta:
         verbose_name = 'Commande'
@@ -66,14 +64,14 @@ class Order(models.Model):
 class Cart(models.Model):
     # quantity = models.CharField(max_length=45)
     total_price = models.FloatField(max_length=45, null=True, blank=True)
-    client = models.ForeignKey(Shopper, on_delete=models.CASCADE)
+    client = models.ForeignKey("accounts.Shopper", on_delete=models.CASCADE)
     orders = models.ManyToManyField(Order, blank=True)
 
     class Meta:
         verbose_name = 'Panier'
 
     def __str__(self) -> str:
-        return f"{self.client.username} ({self.total_price})"
+        return f"{self.client.first_name} ({self.total_price})"
 
 
 class Product(models.Model):

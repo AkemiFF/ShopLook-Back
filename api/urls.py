@@ -10,4 +10,5 @@ router.register(r'category', CategoryViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path('v1/', include('rest_framework.urls')),
+    path("auth/", include("accounts.urls")),
 ]
